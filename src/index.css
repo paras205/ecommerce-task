@@ -60,10 +60,14 @@ ul {
   justify-content: space-between;
   align-items: center;
 }
-.header-logo h3 {
+.header_logo {
   color: #fff;
   font-size: 24px;
   font-family: "Luckiest Guy";
+  margin-right: 30px;
+}
+.header_logo a {
+  color: #fff;
 }
 .header-search {
   width: 100%;
@@ -279,6 +283,7 @@ ul {
   border-bottom: 1px dashed #ddd;
   padding-bottom: 15px;
   padding-top: 15px;
+  cursor: pointer;
 }
 .sidebar_item input {
   position: relative;
@@ -405,4 +410,132 @@ ul {
 .count {
   font-weight: 600;
   font-size: 16px;
+}
+.sidebar_item span {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #ddd;
+  display: inline-block;
+  margin-right: 5px;
+  position: relative;
+  top: 1px;
+}
+.sidebar_item span.active {
+  width: 12px;
+  height: 12px;
+  background-color: var(--main-button-color);
+}
+.content {
+  min-height: 100vh;
+}
+.loader {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dark_theme .footer,
+.dark_theme .header {
+  background-color: #000;
+}
+.dark_theme .content {
+  background-color: #121212;
+}
+.dark_theme .loader,
+.dark_theme .cart_right_wrapper,
+.dark_theme .cart_left table,
+.dark_theme .header-search input,
+.dark_theme .card_inner,
+.dark_theme .sidebar {
+  background-color: #333333;
+}
+.dark_theme .search_page h4,
+.dark_theme .cart_right_wrapper ul li,
+.dark_theme .cart_left table tr th,
+.dark_theme .cart_left table tr td,
+.dark_theme .card_content h3,
+.dark_theme .sidebar .sidebar_item {
+  color: #fff;
+}
+.dark_theme .header-search input {
+  color: #fff;
+}
+/* MEDIA QUERY */
+@media (min-width: 767px) {
+  .header-search svg,
+  .add_product svg {
+    display: none;
+  }
+}
+@media (max-width: 991px) {
+  .card {
+    width: 50%;
+  }
+  .search_page .card {
+    width: 33.333333333333%;
+  }
+}
+@media (max-width: 767px) {
+  .cart_left,
+  .cart_right,
+  .products,
+  .sidebar {
+    width: 100%;
+    float: none;
+  }
+  .products,
+  .cart_left,
+  .cart_right {
+    padding: 0px;
+  }
+  .cart_right_wrapper,
+  .products {
+    margin-top: 50px;
+  }
+  .header-search form {
+    display: none;
+  }
+  .header-search svg {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .add_new {
+    display: none;
+  }
+  .search_page .card {
+    width: 50%;
+  }
+}
+@media (max-width: 570px) {
+  .card {
+    width: 100%;
+    padding: 0px;
+  }
+  .header-right ul li:first-child {
+    padding-left: 10px;
+  }
+  .header_logo {
+    font-size: 18px;
+  }
+
+  .cart_badge {
+    font-size: 11px;
+  }
+  .header-right ul li svg {
+    font-size: 18px;
+  }
+  .header-right ul li {
+    padding: 0 15px;
+  }
+  .add_form .form-group .form-control {
+    width: 100%;
+  }
+  .search_page .card {
+    width: 100%;
+  }
+}
+.modal_search {
+  width: 100%;
+  border-radius: 6px;
 }

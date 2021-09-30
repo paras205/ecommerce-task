@@ -1,30 +1,33 @@
 import React, { FC, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "store/actions/product";
+import { getAllProducts, getIngredients } from "store/actions/product";
 import { RootState } from "store/store";
 import Card from "components/Card";
 import { Product } from "store/types";
 import SidebarItem from "components/SidebarItem";
 import NoData from "components/NoData";
+import Loader from "components/Loader";
 
 const Home: FC<{}> = () => {
   const [loading, setLoading] = useState<boolean>(false);
+  const [selected, setSelected] = useState<string>("");
   const dispatch = useDispatch();
   const getHomeData = async () => {
     setLoading(true);
-    dispatch(getAllProducts());
+    await dispatch(getAllProducts(selected));
     setLoading(false);
   };
   useEffect(() => {
     getHomeData();
+  }, [selected]);
+  useEffect(() => {
+    dispatch(getIngredients());
   }, []);
-  const { products } = useSelector((state: RootState) => state.product);
-  const ingredients = products?.map((item: Product) => {
-    return item?.ingredient?.ingredient_name;
-  });
-  const _ingredients: any = Array.from(new Set(ingredients));
+  const { products, ingredients } = useSelector(
+    (state: RootState) => state.product
+  );
   if (loading) {
-    return <p>loading...</p>;
+    return <Loader />;
   }
   return (
     <div className="content">
@@ -32,8 +35,19 @@ const Home: FC<{}> = () => {
         {products?.length > 0 ? (
           <>
             <div className="sidebar">
-              {_ingredients?.map((item: string, idx: number) => {
-                return <SidebarItem key={idx} item={item} />;
+              <div className="sidebar_item" onClick={() => setSelected("")}>
+                <span className={`${selected === "" ? "active" : ""}`}></span>
+                All
+              </div>
+              {ingredients?.map((item: string, idx: number) => {
+                return (
+                  <SidebarItem
+                    key={idx}
+                    item={item}
+                    setSelected={(item: string) => setSelected(item)}
+                    selected={selected}
+                  />
+                );
               })}
             </div>
             <div className="products">

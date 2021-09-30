@@ -6,6 +6,7 @@ import { Product } from "store/types";
 import Card from "components/Card";
 import { useLocation } from "react-router-dom";
 import NoData from "components/NoData";
+import Loader from "components/Loader";
 
 const Search: FC<{}> = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -22,7 +23,7 @@ const Search: FC<{}> = () => {
   }, [name]);
   const { products } = useSelector((state: RootState) => state.search);
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
   return (
     <div className="content search_page">

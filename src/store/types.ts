@@ -7,10 +7,13 @@ export const HIDE_PRODUCT_FORM = "HIDE_PRODUCT_FORM";
 export const SHOW_LOGIN_FORM = "SHOW_LOGIN_FORM";
 export const HIDE_LOGIN_FORM = "HIDE_LOGIN_FORM";
 export const TOOGLE_THEME = "TOOGLE_THEME";
+export const SHOW_SEARCH_FORM = "SHOW_SEARCH_FORM";
+export const HIDE_SEARCH_FORM = "HIDE_SEARCH_FORM";
 
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const SEARCH_PRODUCTS = "SEARCH_PRODUCTS";
+export const GET_INGREDIENT = "GET_INGREDIENT";
 
 export const ADD_TO_CART = "ADD_TO_CART";
 export const GET_ALL_CART_ITEMS = "GET_ALL_CART_ITEMS";
@@ -56,9 +59,13 @@ export interface Product {
   stepsToCook: string;
   id?: string;
 }
+export interface IngredientItem {
+  item: string;
+}
 export interface ProductState {
   isOpen: boolean;
   products: Product[];
+  ingredients: IngredientItem[];
 }
 
 export interface CartItem {

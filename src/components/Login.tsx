@@ -13,7 +13,6 @@ import { login } from "store/actions/auth";
 const Login = () => {
   const dispatch = useDispatch();
   const { showLoginForm } = useSelector((state: RootState) => state.authModal);
-  console.log(showLoginForm);
   const closeForm = () => {
     dispatch(hideLoginForm());
   };

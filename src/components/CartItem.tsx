@@ -29,12 +29,12 @@ const CartItem: FC<CartProps> = ({
       </td>
       <td>
         <div className="quantity">
-          <span onClick={handleIncreaseQuantity}>
-            <GoPlus />
-          </span>
-          <p className="count"> {quantity}</p>
           <span onClick={handleDecreaseQunatity}>
             <TiMinus />
+          </span>
+          <p className="count"> {quantity}</p>
+          <span onClick={handleIncreaseQuantity}>
+            <GoPlus />
           </span>
         </div>
       </td>

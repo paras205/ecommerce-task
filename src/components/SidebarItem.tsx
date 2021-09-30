@@ -1,25 +1,20 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 
 interface SidebarProps {
   item: string;
+  // React.Dispatch<React.SetStateAction<string>>
+  setSelected: any;
+  selected: string;
 }
-const SidebarItem: FC<SidebarProps> = ({ item }: SidebarProps) => {
-  const [selected, setSelected] = useState<any>([]);
-  const handleCheckBox = (item: string) => {
-    console.log(item);
-  };
-
+const SidebarItem: FC<SidebarProps> = ({
+  item,
+  setSelected,
+  selected,
+}: SidebarProps) => {
   return (
-    <div className="sidebar_item">
-      <label>
-        <input
-          type="checkbox"
-          value={item}
-          checked={selected.includes(item)}
-          onChange={() => handleCheckBox(item)}
-        />
-        {item}
-      </label>
+    <div className="sidebar_item" onClick={() => setSelected(item)}>
+      <span className={`${selected === item ? "active" : ""}`}></span>
+      {item}
     </div>
   );
 };
